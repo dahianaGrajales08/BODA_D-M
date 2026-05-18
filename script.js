@@ -1,97 +1,25 @@
-const wrapper = document.getElementById("envelope-wrapper");
-const content = document.getElementById("content");
-const music = document.getElementById("music");
-const letter = document.querySelector(".letter");
-const btnVolver = document.getElementById("btnVolver");
+// Configurar la fecha de la boda: 3 de Octubre de 2026 a las 18:00
+const weddingDate = new Date("Oct 3, 2026 18:00:00").getTime();
 
-// Configuración de música según tus parámetros originales
-const tiempoInicio = 90; 
-const tiempoFin = 130;   
-
-// --- EVENTO DE APERTURA ---
-wrapper.addEventListener("click", () => {
-    if(wrapper.classList.contains("open")) return;
-    
-    // Iniciar Música en el segundo 90
-    music.currentTime = tiempoInicio;
-    music.play().catch(() => {}); // evita error si el navegador bloquea autoplay
-
-    // Mantener el bucle personalizado
-    music.addEventListener("timeupdate", () => {
-        if (music.currentTime >= tiempoFin) {
-            music.currentTime = tiempoInicio;
-        }
-    });
-
-    wrapper.classList.add("open");
-    iniciarLluviaFlores();
-    
-    setTimeout(() => { letter.classList.add("front-view"); }, 1100); 
-    
-    setTimeout(() => {
-        wrapper.style.opacity = "0";
-        setTimeout(() => {
-            wrapper.style.display = "none";
-            content.style.display = "block";
-            setTimeout(() => content.style.opacity = "1", 100);
-        }, 1500);
-    }, 4500);
-});
-
-// --- BOTÓN VOLVER ---
-btnVolver.addEventListener("click", () => {
-    content.style.opacity = "0";
-    setTimeout(() => {
-        content.style.display = "none";
-        wrapper.classList.remove("open");
-        letter.classList.remove("front-view");
-        wrapper.style.display = "block";
-        setTimeout(() => wrapper.style.opacity = "1", 50);
-    }, 1000);
-});
-
-function toggleMusic() {
-    const icon = document.getElementById("musicIcon");
-    if (music.paused) { music.play(); icon.innerText = "||"; }
-    else { music.pause(); icon.innerText = "▶"; }
-}
-
-function updateCountdown() {
-    const targetDate = new Date("Oct 3, 2026 13:00:00").getTime();
+const timer = setInterval(function() {
     const now = new Date().getTime();
-    const diff = targetDate - now;
+    const distance = weddingDate - now;
 
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    // Cálculos de tiempo para días, horas, minutos y segundos
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("countdown").innerHTML = `
-        <div class="timer-text">
-            <div class="timer-group"><span class="timer-val">${d}</span><span class="timer-lab">Días💍</span></div>
-            <span class="timer-sep">:</span>
-            <div class="timer-group"><span class="timer-val">${h < 10 ? '0'+h : h}</span><span class="timer-lab">Horas</span></div>
-            <span class="timer-sep">:</span>
-            <div class="timer-group"><span class="timer-val">${m < 10 ? '0'+m : m}</span><span class="timer-lab">Mins</span></div>
-        </div>`;
-}
+    // Insertar resultados en el HTML agregando un cero a la izquierda si es menor de 10
+    document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+    document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+    document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+    document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-function iniciarLluviaFlores() {
-    setInterval(() => {
-        const element = document.createElement("div");
-        element.classList.add("falling-element");
-        element.innerHTML = `<svg width="20" height="24" viewBox="0 0 24 30" fill="#ffffff"><path d="M12 0C4 6 0 15 12 30 24 15 20 6 12 0Z"/></svg>`;
-        element.style.left = Math.random() * 100 + "vw";
-        element.style.animationDuration = (Math.random() * 4 + 4) + "s";
-        document.body.appendChild(element);
-        setTimeout(() => element.remove(), 8000);
-    }, 400);
-}
-    // --- WHATSAPP UNIVERSAL (Android + iOS + Desktop) ---
-    function abrirWhatsApp(telefono, mensaje) {
-        const textoCodificado = encodeURIComponent(mensaje);
-        const url = `https://wa.me/${telefono}?text=${textoCodificado}`;
-        window.open(url, '_blank');
+    // Si la fecha límite ha expirado
+    if (distance < 0) {
+        clearInterval(timer);
+        document.getElementById("clock").innerHTML = "<p style='font-family:\'Cormorant Garamond\', serif; font-size:1.5rem; color:var(--verde-olivo); font-style:italic;'>¡Llegó el gran día!</p>";
     }
+}, 1000);
