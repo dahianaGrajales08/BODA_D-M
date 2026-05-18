@@ -356,20 +356,3 @@ body {
         padding: 25px;
     }
 }
-.envelope .bottom-flap {
-  position: absolute;
-  bottom: 0; left: 0;
-  border-left: 50vw solid transparent;
-  border-right: 50vw solid transparent;
-  border-bottom: 44vh solid var(--verde-oscuro);
-  z-index: 5;
-}
-
-.tap-text {
-  display: block;
-  color: rgba(255,255,255,0.6);
-  font-style: italic;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  margin-top: 10px;
-}
