@@ -8,6 +8,11 @@
     --dorado: #C5A059;
     --lila-texto: #8E7AB5;
     --lila-borde: #E0D4F7;
+
+    /* Colores del sobre blanco */
+    --sobre-base: #f0ede8;
+    --sobre-sombra: #d9d4cc;
+    --sobre-flap: #e8e4de;
 }
 
 body { 
@@ -21,6 +26,7 @@ body {
     overflow-x: hidden; 
 }
 
+/* Fondo floral */
 .bg-floral { 
     background-image: url('image_1.png');
     background-size: cover;
@@ -42,12 +48,11 @@ body {
     z-index: 0;
 }
 
-/* SOBRE */
+/* ═══════════════════════════════════════
+   SOBRE — estilo blanco/marfil
+═══════════════════════════════════════ */
 .envelope-wrapper { 
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
+    position: relative; 
     cursor: pointer; 
     z-index: 10; 
     transition: opacity 1.5s ease; 
@@ -55,77 +60,33 @@ body {
 
 .envelope { 
     position: relative; 
+    width: 300px; 
+    height: 200px; 
+    background-color: var(--sobre-base);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15); 
+    z-index: 5; 
+}
+
+/* Línea diagonal característica del sobre */
+.envelope::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--verde-oliva); 
-    z-index: 5; 
-    overflow: hidden;
+    background: linear-gradient(
+        135deg, 
+        transparent 49.5%, 
+        var(--sobre-sombra) 49.5%, 
+        var(--sobre-sombra) 50.5%, 
+        transparent 50.5%
+    );
+    z-index: 3;
+    pointer-events: none;
 }
 
-.envelope .top-flap { 
-    position: absolute; 
-    top: 0; left: 0; 
-    border-left: 50vw solid transparent; 
-    border-right: 50vw solid transparent; 
-    border-top: 44vh solid var(--verde-oscuro); 
-    transform-origin: top center; 
-    transition: transform 1.2s; 
-    z-index: 6; 
-}
-
-.envelope .back { 
-    position: absolute;
-    bottom: 0; left: 0;
-    border-left: 50vw solid var(--verde-oscuro); 
-    border-top: 44vh solid transparent; 
-    z-index: 4; 
-}
-
-.envelope .front { 
-    position: absolute;
-    bottom: 0; right: 0;
-    border-right: 50vw solid var(--verde-oscuro); 
-    border-top: 44vh solid transparent; 
-    z-index: 4; 
-}
-
-.envelope .bottom-flap {
-    position: absolute;
-    bottom: 0; left: 0;
-    border-left: 50vw solid transparent;
-    border-right: 50vw solid transparent;
-    border-bottom: 44vh solid var(--verde-oscuro);
-    z-index: 5;
-}
-
-.wax-seal { 
-    position: absolute; 
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px; height: 80px; 
-    background: radial-gradient(circle at 38% 38%, #e8c47a, #C5A059 50%, #9a7535);
-    border-radius: 50%; 
-    z-index: 8; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    color: white; 
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-}
-
-.open .top-flap { 
-    transform: rotateX(180deg); 
-}
-
-.open .letter { 
-    transform: translateY(-135px); 
-}
-
-/* CARTA */
+/* CARTA dentro del sobre */
 .letter { 
     position: absolute; 
     bottom: 10px; 
@@ -138,16 +99,22 @@ body {
     text-align: center; 
     z-index: 2; 
     transition: transform 2.0s ease-in-out; 
-    display: flex; 
+    display: none;         /* Oculta por defecto */
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
+}
+
+/* La carta aparece cuando el sobre está abierto */
+.open .letter {
+    display: flex;
 }
 
 .letter.front-view { 
     z-index: 7 !important; 
 }
 
+/* Anillos pequeños dentro de la carta */
 .rings-img-small {
     max-width: 55px;
     max-height: 45px;
@@ -158,6 +125,7 @@ body {
     object-fit: contain;
 }
 
+/* Anillos en el contenido principal */
 .rings-img-main {
     max-width: 130px;
     width: auto;
@@ -167,7 +135,9 @@ body {
     object-fit: contain;
 }
 
-/* TEXTOS */
+/* ═══════════════════════════════════════
+   TEXTOS
+═══════════════════════════════════════ */
 .gold-text { 
     color: var(--dorado); 
     font-family: 'Cormorant Garamond', serif; 
@@ -175,18 +145,15 @@ body {
     margin: 0; 
     text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
-
 .header-names { 
     font-size: 2.2rem; 
 }
-
 .subtitle { 
     font-size: 0.8rem; 
     letter-spacing: 1px; 
     color: #666; 
     margin: 10px 0; 
 }
-
 .mensaje { 
     color: var(--texto); 
     font-size: 0.95rem; 
@@ -198,7 +165,9 @@ body {
     border-radius: 30px;
 }
 
-/* REPRODUCTOR */
+/* ═══════════════════════════════════════
+   REPRODUCTOR
+═══════════════════════════════════════ */
 .custom-player { 
     display: flex; 
     flex-direction: column; 
@@ -207,13 +176,11 @@ body {
     margin: 20px auto; 
     max-width: 250px; 
 }
-
 .player-controls { 
     display: flex; 
     align-items: center; 
     gap: 20px; 
 }
-
 .play-pause-btn { 
     background: #333; 
     color: white; 
@@ -226,14 +193,12 @@ body {
     align-items: center; 
     justify-content: center; 
 }
-
 .player-progress { 
     position: relative; 
     width: 100%; 
     height: 2px; 
     background: #ddd; 
 }
-
 .progress-bar { 
     position: absolute; 
     height: 100%; 
@@ -241,7 +206,9 @@ body {
     background: #333; 
 }
 
-/* CONTADOR */
+/* ═══════════════════════════════════════
+   CONTADOR
+═══════════════════════════════════════ */
 .timer-text { 
     display: flex; 
     justify-content: center; 
@@ -251,23 +218,19 @@ body {
     color: var(--lila-texto); 
     font-family: 'Cormorant Garamond', serif; 
 }
-
 .timer-group { 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
 }
-
 .timer-val { 
     font-size: 2.8rem; 
     line-height: 1; 
 }
-
 .timer-sep { 
     font-size: 2.2rem; 
     opacity: 0.5; 
 }
-
 .timer-lab { 
     font-size: 0.7rem; 
     font-family: 'Montserrat', sans-serif; 
@@ -276,7 +239,9 @@ body {
     margin-top: 5px; 
 }
 
-/* BOTONES */
+/* ═══════════════════════════════════════
+   BOTONES
+═══════════════════════════════════════ */
 .btn-oliva { 
     background-color: var(--verde-oliva); 
     color: white; 
@@ -292,12 +257,10 @@ body {
     text-align: center; 
     transition: all 0.2s ease;
 }
-
 .btn-oliva:hover {
     background-color: var(--verde-oscuro);
     transform: scale(1.02);
 }
-
 .btn-volver { 
     background: rgba(255, 255, 255, 0.7); 
     border: 1px solid var(--lila-borde); 
@@ -309,7 +272,72 @@ body {
     cursor: pointer; 
 }
 
-/* CONTENIDO PRINCIPAL */
+/* ═══════════════════════════════════════
+   PARTES DEL SOBRE — color marfil/beige
+═══════════════════════════════════════ */
+.envelope .front { 
+    border-right: 150px solid var(--sobre-sombra); 
+    border-top: 100px solid transparent; 
+    border-bottom: 100px solid var(--sobre-sombra); 
+    position: absolute; 
+    right: 0; 
+    bottom: 0; 
+    z-index: 4; 
+}
+.envelope .back { 
+    border-left: 150px solid var(--sobre-sombra); 
+    border-top: 100px solid transparent; 
+    border-bottom: 100px solid var(--sobre-sombra); 
+    position: absolute; 
+    left: 0; 
+    bottom: 0; 
+    z-index: 4; 
+}
+.envelope .top-flap { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    border-left: 150px solid transparent; 
+    border-right: 150px solid transparent; 
+    border-top: 115px solid var(--sobre-flap); 
+    transform-origin: top; 
+    transition: transform 1.2s; 
+    z-index: 6; 
+}
+.open .top-flap { 
+    transform: rotateX(180deg); 
+}
+.open .letter { 
+    transform: translateY(-135px); 
+}
+
+/* ═══════════════════════════════════════
+   SELLO DE CERA — estilo dorado elegante
+═══════════════════════════════════════ */
+.wax-seal { 
+    position: absolute; 
+    top: 95px; 
+    left: 130px; 
+    width: 45px; 
+    height: 45px; 
+    background: radial-gradient(circle at 35% 35%, #d4a843, #a67c20);
+    border-radius: 50%; 
+    z-index: 8; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    font-size: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* ═══════════════════════════════════════
+   CONTENIDO PRINCIPAL
+═══════════════════════════════════════ */
 #content { 
     display: none; 
     max-width: 500px; 
@@ -326,7 +354,9 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-/* LLUVIA DE FLORES */
+/* ═══════════════════════════════════════
+   LLUVIA DE FLORES
+═══════════════════════════════════════ */
 .falling-element { 
     position: fixed; 
     top: -10vh; 
@@ -334,17 +364,17 @@ body {
     pointer-events: none; 
     animation: fall linear forwards; 
 }
-
 @keyframes fall { 
     to { transform: translateY(110vh) rotate(360deg); } 
 }
 
-/* FECHA */
+/* ═══════════════════════════════════════
+   FECHA
+═══════════════════════════════════════ */
 .fecha-evento { 
     margin: 20px auto 5px; 
     text-align: center; 
 }
-
 .fecha-titulo { 
     font-family: 'Cormorant Garamond', serif; 
     font-size: 2rem; 
@@ -354,7 +384,6 @@ body {
     letter-spacing: 4px;
     text-shadow: 0 2px 8px rgba(197,160,89,0.25);
 }
-
 .fecha-hora { 
     font-family: 'Montserrat', sans-serif; 
     font-size: 0.8rem; 
@@ -363,7 +392,6 @@ body {
     margin: 5px 0 0; 
     text-transform: uppercase; 
 }
-
 .fecha-sub { 
     font-family: 'Cormorant Garamond', serif; 
     font-style: italic; 
@@ -374,7 +402,9 @@ body {
     opacity: 0.85;
 }
 
-/* RESPONSIVE */
+/* ═══════════════════════════════════════
+   RESPONSIVE MÓVIL
+═══════════════════════════════════════ */
 @media (max-width: 550px) {
     .rings-img-main {
         max-width: 100px;
