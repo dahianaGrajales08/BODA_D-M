@@ -21,7 +21,6 @@ body {
     overflow-x: hidden; 
 }
 
-/* ✅ Fondo floral real - imagen image_1.png */
 .bg-floral { 
     background-image: url('image_1.png');
     background-size: cover;
@@ -31,7 +30,6 @@ body {
     position: relative;
 }
 
-/* Sombra semitransparente sobre el fondo para mejorar legibilidad del texto (opcional) */
 .bg-floral::before {
     content: "";
     position: fixed;
@@ -54,6 +52,7 @@ body {
     z-index: 10; 
     transition: opacity 1.5s ease; 
 }
+
 .envelope { 
     position: relative; 
     width: 100%;
@@ -63,6 +62,70 @@ body {
     overflow: hidden;
 }
 
+.envelope .top-flap { 
+    position: absolute; 
+    top: 0; left: 0; 
+    border-left: 50vw solid transparent; 
+    border-right: 50vw solid transparent; 
+    border-top: 44vh solid var(--verde-oscuro); 
+    transform-origin: top center; 
+    transition: transform 1.2s; 
+    z-index: 6; 
+}
+
+.envelope .back { 
+    position: absolute;
+    bottom: 0; left: 0;
+    border-left: 50vw solid var(--verde-oscuro); 
+    border-top: 44vh solid transparent; 
+    z-index: 4; 
+}
+
+.envelope .front { 
+    position: absolute;
+    bottom: 0; right: 0;
+    border-right: 50vw solid var(--verde-oscuro); 
+    border-top: 44vh solid transparent; 
+    z-index: 4; 
+}
+
+.envelope .bottom-flap {
+    position: absolute;
+    bottom: 0; left: 0;
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    border-bottom: 44vh solid var(--verde-oscuro);
+    z-index: 5;
+}
+
+.wax-seal { 
+    position: absolute; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; height: 80px; 
+    background: radial-gradient(circle at 38% 38%, #e8c47a, #C5A059 50%, #9a7535);
+    border-radius: 50%; 
+    z-index: 8; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.open .top-flap { 
+    transform: rotateX(180deg); 
+}
+
+.open .letter { 
+    transform: translateY(-135px); 
+}
+
+/* CARTA */
 .letter { 
     position: absolute; 
     bottom: 10px; 
@@ -80,11 +143,11 @@ body {
     align-items: center; 
     justify-content: center; 
 }
+
 .letter.front-view { 
     z-index: 7 !important; 
 }
 
-/* ✅ Estilo para los anillos DENTRO de la carta (pequeños y discretos) */
 .rings-img-small {
     max-width: 55px;
     max-height: 45px;
@@ -95,7 +158,6 @@ body {
     object-fit: contain;
 }
 
-/* ✅ Estilo para los anillos en el CONTENIDO PRINCIPAL (tamaño justo y elegante) */
 .rings-img-main {
     max-width: 130px;
     width: auto;
@@ -113,15 +175,18 @@ body {
     margin: 0; 
     text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
+
 .header-names { 
     font-size: 2.2rem; 
 }
+
 .subtitle { 
     font-size: 0.8rem; 
     letter-spacing: 1px; 
     color: #666; 
     margin: 10px 0; 
 }
+
 .mensaje { 
     color: var(--texto); 
     font-size: 0.95rem; 
@@ -142,11 +207,13 @@ body {
     margin: 20px auto; 
     max-width: 250px; 
 }
+
 .player-controls { 
     display: flex; 
     align-items: center; 
     gap: 20px; 
 }
+
 .play-pause-btn { 
     background: #333; 
     color: white; 
@@ -159,12 +226,14 @@ body {
     align-items: center; 
     justify-content: center; 
 }
+
 .player-progress { 
     position: relative; 
     width: 100%; 
     height: 2px; 
     background: #ddd; 
 }
+
 .progress-bar { 
     position: absolute; 
     height: 100%; 
@@ -182,19 +251,23 @@ body {
     color: var(--lila-texto); 
     font-family: 'Cormorant Garamond', serif; 
 }
+
 .timer-group { 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
 }
+
 .timer-val { 
     font-size: 2.8rem; 
     line-height: 1; 
 }
+
 .timer-sep { 
     font-size: 2.2rem; 
     opacity: 0.5; 
 }
+
 .timer-lab { 
     font-size: 0.7rem; 
     font-family: 'Montserrat', sans-serif; 
@@ -219,10 +292,12 @@ body {
     text-align: center; 
     transition: all 0.2s ease;
 }
+
 .btn-oliva:hover {
     background-color: var(--verde-oscuro);
     transform: scale(1.02);
 }
+
 .btn-volver { 
     background: rgba(255, 255, 255, 0.7); 
     border: 1px solid var(--lila-borde); 
@@ -234,56 +309,7 @@ body {
     cursor: pointer; 
 }
 
-/* PARTES SOBRE */
-.envelope .front { 
-    position: absolute;
-    bottom: 0; right: 0;
-    border-right: 50vw solid var(--verde-oscuro); 
-    border-top: 44vh solid transparent; 
-    z-index: 4; 
-}
-.envelope .back { 
-    position: absolute;
-    bottom: 0; left: 0;
-    border-left: 50vw solid var(--verde-oscuro); 
-    border-top: 44vh solid transparent; 
-    z-index: 4; 
-}
-.envelope .top-flap { 
-    position: absolute; 
-    top: 0; left: 0; 
-    border-left: 50vw solid transparent; 
-    border-right: 50vw solid transparent; 
-    border-top: 44vh solid var(--verde-oscuro); 
-    transform-origin: top center; 
-    transition: transform 1.2s; 
-    z-index: 6; 
-}
-.open .top-flap { 
-    transform: rotateX(180deg); 
-}
-.open .letter { 
-    transform: translateY(-135px); 
-}
-.wax-seal { 
-    position: absolute; 
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px; height: 80px; 
-    background: radial-gradient(circle at 38% 38%, #e8c47a, #C5A059 50%, #9a7535);
-    border-radius: 50%; 
-    z-index: 8; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    color: white; 
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-}
-
+/* CONTENIDO PRINCIPAL */
 #content { 
     display: none; 
     max-width: 500px; 
@@ -299,6 +325,8 @@ body {
     position: relative; 
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
+
+/* LLUVIA DE FLORES */
 .falling-element { 
     position: fixed; 
     top: -10vh; 
@@ -306,14 +334,17 @@ body {
     pointer-events: none; 
     animation: fall linear forwards; 
 }
+
 @keyframes fall { 
     to { transform: translateY(110vh) rotate(360deg); } 
 }
 
+/* FECHA */
 .fecha-evento { 
     margin: 20px auto 5px; 
     text-align: center; 
 }
+
 .fecha-titulo { 
     font-family: 'Cormorant Garamond', serif; 
     font-size: 2rem; 
@@ -323,6 +354,7 @@ body {
     letter-spacing: 4px;
     text-shadow: 0 2px 8px rgba(197,160,89,0.25);
 }
+
 .fecha-hora { 
     font-family: 'Montserrat', sans-serif; 
     font-size: 0.8rem; 
@@ -331,6 +363,7 @@ body {
     margin: 5px 0 0; 
     text-transform: uppercase; 
 }
+
 .fecha-sub { 
     font-family: 'Cormorant Garamond', serif; 
     font-style: italic; 
@@ -341,7 +374,7 @@ body {
     opacity: 0.85;
 }
 
-/* Ajustes responsivos para móviles */
+/* RESPONSIVE */
 @media (max-width: 550px) {
     .rings-img-main {
         max-width: 100px;
