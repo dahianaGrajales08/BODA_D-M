@@ -1,422 +1,232 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;600&display=swap');
-
 :root {
-    --verde-oliva: #7A8450;
-    --verde-oscuro: #5d663d;
-    --marfil: #FBF9F6;
-    --texto: #444;
-    --dorado: #C5A059;
-    --lila-texto: #8E7AB5;
-    --lila-borde: #E0D4F7;
-
-    /* Colores del sobre blanco */
-    --sobre-base: #f0ede8;
-    --sobre-sombra: #d9d4cc;
-    --sobre-flap: #e8e4de;
+    --oro-viejo: #bfa37a;
+    --verde-olivo: #76885B;
+    --oscuro: #2C302E;
+    --blanco-roto: #F9F8F6;
 }
 
-body { 
-    margin: 0; 
-    padding: 0; 
-    font-family: 'Montserrat', sans-serif; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh; 
-    overflow-x: hidden; 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* Fondo floral */
-.bg-floral { 
-    background-image: url('image_1.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--blanco-roto);
+    color: var(--oscuro);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Contenedor Principal estilo tarjeta móvil */
+.invitation-card {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    min-height: 100vh;
     position: relative;
+    padding-bottom: 60px;
 }
 
-.bg-floral::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Portada / Imagen de los Novios */
+.hero-image {
     width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.15);
-    pointer-events: none;
-    z-index: 0;
+    height: 75vh;
+    object-fit: cover;
+    border-bottom: 5px solid var(--blanco-roto);
 }
 
-/* ═══════════════════════════════════════
-   SOBRE — estilo blanco/marfil
-═══════════════════════════════════════ */
-.envelope-wrapper { 
-    position: relative; 
-    cursor: pointer; 
-    z-index: 10; 
-    transition: opacity 1.5s ease; 
+/* Sección de Nombres */
+.names-section {
+    padding: 40px 20px;
+    background: linear-gradient(to bottom, rgba(249,248,246,0) 0%, rgba(249,248,246,1) 20%);
+    margin-top: -80px;
+    position: relative;
+    z-index: 2;
 }
 
-.envelope { 
-    position: relative; 
-    width: 300px; 
-    height: 200px; 
-    background-color: var(--sobre-base);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15); 
-    z-index: 5; 
+.names {
+    font-family: 'Oooh Baby', cursive;
+    font-size: 3.5rem;
+    color: var(--verde-olivo);
+    margin-bottom: 10px;
+    line-height: 1.2;
 }
 
-/* Línea diagonal característica del sobre */
-.envelope::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        135deg, 
-        transparent 49.5%, 
-        var(--sobre-sombra) 49.5%, 
-        var(--sobre-sombra) 50.5%, 
-        transparent 50.5%
-    );
-    z-index: 3;
-    pointer-events: none;
-}
-
-/* CARTA dentro del sobre */
-.letter { 
-    position: absolute; 
-    bottom: 10px; 
-    left: 20px; 
-    width: 260px; 
-    height: 170px; 
-    background: white; 
-    padding: 15px; 
-    box-sizing: border-box; 
-    text-align: center; 
-    z-index: 2; 
-    transition: transform 2.0s ease-in-out; 
-    display: none;         /* Oculta por defecto */
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-}
-
-/* La carta aparece cuando el sobre está abierto */
-.open .letter {
-    display: flex;
-}
-
-.letter.front-view { 
-    z-index: 7 !important; 
-}
-
-/* Anillos pequeños dentro de la carta */
-.rings-img-small {
-    max-width: 55px;
-    max-height: 45px;
-    width: auto;
-    height: auto;
-    display: block;
-    margin: 0 auto 8px auto;
-    object-fit: contain;
-}
-
-/* Anillos en el contenido principal */
-.rings-img-main {
-    max-width: 130px;
-    width: auto;
-    height: auto;
-    display: block;
-    margin: 0 auto 15px auto;
-    object-fit: contain;
-}
-
-/* ═══════════════════════════════════════
-   TEXTOS
-═══════════════════════════════════════ */
-.gold-text { 
-    color: var(--dorado); 
-    font-family: 'Cormorant Garamond', serif; 
-    font-weight: 600; 
-    margin: 0; 
-    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-.header-names { 
-    font-size: 2.2rem; 
-}
-.subtitle { 
-    font-size: 0.8rem; 
-    letter-spacing: 1px; 
-    color: #666; 
-    margin: 10px 0; 
-}
-.mensaje { 
-    color: var(--texto); 
-    font-size: 0.95rem; 
-    line-height: 1.4; 
-    margin: 25px auto; 
-    max-width: 90%; 
-    background: rgba(255,255,240,0.6);
-    padding: 12px;
-    border-radius: 30px;
-}
-
-/* ═══════════════════════════════════════
-   REPRODUCTOR
-═══════════════════════════════════════ */
-.custom-player { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 10px; 
-    margin: 20px auto; 
-    max-width: 250px; 
-}
-.player-controls { 
-    display: flex; 
-    align-items: center; 
-    gap: 20px; 
-}
-.play-pause-btn { 
-    background: #333; 
-    color: white; 
-    border: none; 
-    width: 45px; 
-    height: 45px; 
-    border-radius: 50%; 
-    cursor: pointer; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-}
-.player-progress { 
-    position: relative; 
-    width: 100%; 
-    height: 2px; 
-    background: #ddd; 
-}
-.progress-bar { 
-    position: absolute; 
-    height: 100%; 
-    width: 40%; 
-    background: #333; 
-}
-
-/* ═══════════════════════════════════════
-   CONTADOR
-═══════════════════════════════════════ */
-.timer-text { 
-    display: flex; 
-    justify-content: center; 
-    align-items: baseline; 
-    gap: 10px; 
-    margin: 30px 0; 
-    color: var(--lila-texto); 
-    font-family: 'Cormorant Garamond', serif; 
-}
-.timer-group { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-}
-.timer-val { 
-    font-size: 2.8rem; 
-    line-height: 1; 
-}
-.timer-sep { 
-    font-size: 2.2rem; 
-    opacity: 0.5; 
-}
-.timer-lab { 
-    font-size: 0.7rem; 
-    font-family: 'Montserrat', sans-serif; 
-    text-transform: uppercase; 
-    color: #999; 
-    margin-top: 5px; 
-}
-
-/* ═══════════════════════════════════════
-   BOTONES
-═══════════════════════════════════════ */
-.btn-oliva { 
-    background-color: var(--verde-oliva); 
-    color: white; 
-    border: none; 
-    padding: 12px 20px; 
-    border-radius: 25px; 
-    cursor: pointer; 
-    text-decoration: none; 
-    display: block; 
-    margin: 12px auto; 
-    width: 85%; 
-    font-weight: 600; 
-    text-align: center; 
-    transition: all 0.2s ease;
-}
-.btn-oliva:hover {
-    background-color: var(--verde-oscuro);
-    transform: scale(1.02);
-}
-.btn-volver { 
-    background: rgba(255, 255, 255, 0.7); 
-    border: 1px solid var(--lila-borde); 
-    color: var(--lila-texto); 
-    padding: 8px 30px; 
-    border-radius: 50px; 
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: 1.1rem; 
-    cursor: pointer; 
-}
-
-/* ═══════════════════════════════════════
-   PARTES DEL SOBRE — color marfil/beige
-═══════════════════════════════════════ */
-.envelope .front { 
-    border-right: 150px solid var(--sobre-sombra); 
-    border-top: 100px solid transparent; 
-    border-bottom: 100px solid var(--sobre-sombra); 
-    position: absolute; 
-    right: 0; 
-    bottom: 0; 
-    z-index: 4; 
-}
-.envelope .back { 
-    border-left: 150px solid var(--sobre-sombra); 
-    border-top: 100px solid transparent; 
-    border-bottom: 100px solid var(--sobre-sombra); 
-    position: absolute; 
-    left: 0; 
-    bottom: 0; 
-    z-index: 4; 
-}
-.envelope .top-flap { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    border-left: 150px solid transparent; 
-    border-right: 150px solid transparent; 
-    border-top: 115px solid var(--sobre-flap); 
-    transform-origin: top; 
-    transition: transform 1.2s; 
-    z-index: 6; 
-}
-.open .top-flap { 
-    transform: rotateX(180deg); 
-}
-.open .letter { 
-    transform: translateY(-135px); 
-}
-
-/* ═══════════════════════════════════════
-   SELLO DE CERA — estilo dorado elegante
-═══════════════════════════════════════ */
-.wax-seal { 
-    position: absolute; 
-    top: 95px; 
-    left: 130px; 
-    width: 45px; 
-    height: 45px; 
-    background: radial-gradient(circle at 35% 35%, #d4a843, #a67c20);
-    border-radius: 50%; 
-    z-index: 8; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    color: white; 
-    font-size: 10px;
+.phrase {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
+    font-size: 1.3rem;
+    color: #666;
+    margin: 20px 0;
+    padding: 0 30px;
+}
+
+.announcement {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    color: var(--oro-viejo);
+}
+
+.divider {
+    font-size: 1.5rem;
+    color: var(--oro-viejo);
+    margin: 15px 0;
+}
+
+/* Cuenta Regresiva */
+.countdown-container {
+    background-color: #f2efe9;
+    padding: 25px 10px;
+    margin: 30px 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(191, 163, 122, 0.3);
+}
+
+.countdown-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: var(--oscuro);
+}
+
+.countdown {
+    display: flex;
+    justify-content: space-around;
+}
+
+.time-box {
+    flex: 1;
+}
+
+.time-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    color: var(--verde-olivo);
 }
 
-/* ═══════════════════════════════════════
-   CONTENIDO PRINCIPAL
-═══════════════════════════════════════ */
-#content { 
-    display: none; 
-    max-width: 500px; 
-    width: 90%; 
-    background: rgba(255, 255, 255, 0.96); 
-    padding: 40px; 
-    text-align: center; 
-    opacity: 0; 
-    transition: opacity 2s ease; 
-    border-radius: 25px; 
-    backdrop-filter: blur(3px); 
-    z-index: 2; 
-    position: relative; 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+.time-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #777;
 }
 
-/* ═══════════════════════════════════════
-   LLUVIA DE FLORES
-═══════════════════════════════════════ */
-.falling-element { 
-    position: fixed; 
-    top: -10vh; 
-    z-index: 99; 
-    pointer-events: none; 
-    animation: fall linear forwards; 
-}
-@keyframes fall { 
-    to { transform: translateY(110vh) rotate(360deg); } 
+/* Detalles del Evento */
+.details-section {
+    padding: 30px 20px;
 }
 
-/* ═══════════════════════════════════════
-   FECHA
-═══════════════════════════════════════ */
-.fecha-evento { 
-    margin: 20px auto 5px; 
-    text-align: center; 
-}
-.fecha-titulo { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: 2rem; 
-    color: var(--dorado); 
-    font-weight: 600; 
-    margin: 0; 
-    letter-spacing: 4px;
-    text-shadow: 0 2px 8px rgba(197,160,89,0.25);
-}
-.fecha-hora { 
-    font-family: 'Montserrat', sans-serif; 
-    font-size: 0.8rem; 
-    letter-spacing: 2px; 
-    color: #888; 
-    margin: 5px 0 0; 
-    text-transform: uppercase; 
-}
-.fecha-sub { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-style: italic; 
-    font-size: 1.15rem; 
-    color: var(--dorado); 
-    margin: 8px 0 0; 
+.date-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--oscuro);
     letter-spacing: 1px;
-    opacity: 0.85;
+    margin-bottom: 5px;
 }
 
-/* ═══════════════════════════════════════
-   RESPONSIVE MÓVIL
-═══════════════════════════════════════ */
-@media (max-width: 550px) {
-    .rings-img-main {
-        max-width: 100px;
-    }
-    .rings-img-small {
-        max-width: 45px;
-        max-height: 35px;
-    }
-    .header-names {
-        font-size: 1.8rem;
-    }
-    #content {
-        padding: 25px;
+.day-of-week {
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.location-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--verde-olivo);
+    margin-top: 25px;
+    letter-spacing: 1px;
+}
+
+.location-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    margin: 5px 0;
+}
+
+.location-address {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    background-color: var(--oscuro);
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: var(--verde-olivo);
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+    background-color: var(--verde-olivo);
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(191,163,122,0.4), rgba(0,0,0,0));
+    margin: 20px;
+}
+
+/* Bloque de Confirmación (RSVP) */
+.rsvp-section {
+    background-color: #f7f5f0;
+    margin: 40px 20px;
+    padding: 35px 20px;
+    border-radius: 15px;
+}
+
+.rsvp-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.rsvp-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 40px;
+    letter-spacing: 1px;
+}
+
+/* Animación de entrada fluida */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.5s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
