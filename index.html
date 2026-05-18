@@ -3,72 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de Boda - Dahiana & Manuel</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;400;600&family=Oooh+Baby&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Dahiana & Manuel - Invitación de Boda 03.10.2026">
+    <title>Dahiana & Manuel - Nos Casamos</title>
+    <link rel="stylesheet" href="wedding-styles.css">
 </head>
 <body>
-
-    <div class="invitation-card">
-        
-        <img src="foto invitacion de boda.jpeg" alt="Dahiana y Manuel" class="hero-image">
-
-        <div class="names-section fade-in">
-            <h1 class="names">Dahiana y Manuel</h1>
-            <div class="divider">♥</div>
-            <p class="phrase">"Hay momentos en la vida que son inolvidables, y compartirlos con las personas que más amamos los hace eternos."</p>
-            <p class="announcement">¡Nos Casamos!</p>
-        </div>
-
-        <div class="countdown-container fade-in">
-            <h2 class="countdown-title">Solo faltan:</h2>
-            <div class="countdown" id="clock">
-                <div class="time-box">
-                    <div class="time-number" id="days">00</div>
-                    <div class="time-label">Días</div>
-                </div>
-                <div class="time-box">
-                    <div class="time-number" id="hours">00</div>
-                    <div class="time-label">Horas</div>
-                </div>
-                <div class="time-box">
-                    <div class="time-number" id="minutes">00</div>
-                    <div class="time-label">Min</div>
-                </div>
-                <div class="time-box">
-                    <div class="time-number" id="seconds">00</div>
-                    <div class="time-label">Seg</div>
+    <!-- Envelope Fullscreen Section -->
+    <section class="envelope-section" id="envelopeSection">
+        <div class="envelope-container" id="envelopeContainer">
+            <div class="envelope" id="envelope">
+                <!-- Top Flap -->
+                <div class="envelope-flap"></div>
+                
+                <!-- Envelope Body -->
+                <div class="envelope-body">
+                    <!-- Wax Seal -->
+                    <div class="wax-seal">D&M</div>
+                    
+                    <!-- Letter Inside -->
+                    <div class="letter" id="letter">
+                        <div class="letter-content">
+                            <h2 class="letter-title">Dahiana & Manuel</h2>
+                            <p class="letter-date">03 · 10 · 2026</p>
+                            <p class="letter-tap">Toca para abrir</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="details-section fade-in">
-            <div class="date-title">03 . 10 . 2026</div>
-            <p class="day-of-week">VIERNES</p>
-            
-            <h3 class="location-title">LUGAR DE LA CELEBRACIÓN</h3>
-            <p class="location-name">Cortijo Triana</p>
-            <p class="location-address">Andújar, Jaén, España</p>
-            
-            <a href="https://maps.google.com" target="_blank" class="btn">Ver Ubicación</a>
+    <!-- Main Content Section (Hidden Initially) -->
+    <section class="content-section" id="contentSection">
+        <div class="content-wrapper">
+            <!-- Header -->
+            <header class="header-section">
+                <h1 class="main-title">Dahiana & Manuel</h1>
+                <p class="main-tagline">Nos encontramos, nos elegimos y hoy queremos<br>compartir contigo nuestra felicidad.</p>
+            </header>
+
+            <!-- Event Details -->
+            <div class="event-details">
+                <div class="date-display">
+                    <span class="date-num">03</span>
+                    <span class="date-sep">•</span>
+                    <span class="date-num">10</span>
+                    <span class="date-sep">•</span>
+                    <span class="date-num">2026</span>
+                </div>
+                <p class="event-time">13:00 H • CORTIJO TRIANA, ANDÚJAR</p>
+                <p class="event-subtitle">✨ Cuenta atrás para el sí, quiero ✨</p>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">137</span>
+                    <span class="countdown-label">días</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">23</span>
+                    <span class="countdown-label">horas</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">26</span>
+                    <span class="countdown-label">mins</span>
+                </div>
+            </div>
+
+            <!-- Music Player -->
+            <div class="music-section">
+                <button class="music-btn" id="musicBtn" title="Reproducir música">
+                    <span class="music-icon">🎵</span>
+                </button>
+                <span class="music-text">Ed Sheeran - Perfect</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="buttons-section">
+                <button class="btn btn-location" onclick="openMaps()">
+                    📍 Ver Ubicación
+                </button>
+                <a href="https://wa.me/34602732290?text=Confirmo mi asistencia a la boda de Dahiana & Manuel" class="btn btn-confirm">
+                    💬 Confirmar con Dahiana
+                </a>
+                <a href="https://wa.me/34664593119?text=Confirmo mi asistencia a la boda de Dahiana & Manuel" class="btn btn-confirm">
+                    💬 Confirmar con Manuel
+                </a>
+            </div>
+
+            <!-- Event Information -->
+            <div class="event-info">
+                <h2>Detalles del Evento</h2>
+                
+                <div class="info-block">
+                    <h3>📍 Ubicación</h3>
+                    <p>Cortijo Triana</p>
+                    <p class="info-subtitle">Carretera de Arjona, km 1</p>
+                    <p class="info-subtitle">23740 Andújar, Jaén</p>
+                </div>
+
+                <div class="info-block">
+                    <h3>⏰ Cronograma</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-time">13:00</span>
+                            <span class="timeline-activity">Ceremonia</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-time">14:00</span>
+                            <span class="timeline-activity">Cóctail y Fotos</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-time">15:00</span>
+                            <span class="timeline-activity">Banquete</span>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-time">20:00</span>
+                            <span class="timeline-activity">Celebración y Baile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <h3>👔 Código de Vestimienta</h3>
+                    <p>Formal / Elegante</p>
+                </div>
+
+                <div class="info-block">
+                    <h3>🍽️ Menú</h3>
+                    <p>Menú gourmet personalizado</p>
+                    <p class="info-subtitle">Indicar preferencias en confirmación</p>
+                </div>
+            </div>
+
+            <!-- RSVP Section -->
+            <div class="rsvp-section">
+                <h2>Confirmación de Asistencia</h2>
+                <p>Esperamos contar con tu presencia en nuestro día especial</p>
+                <p class="rsvp-deadline">Por favor confirma antes del 15 de Septiembre</p>
+                <div class="rsvp-contacts">
+                    <div class="contact-card">
+                        <p><strong>Dahiana</strong></p>
+                        <a href="tel:+34602732290">+34 602 732 290</a>
+                    </div>
+                    <div class="contact-card">
+                        <p><strong>Manuel</strong></p>
+                        <a href="tel:+34664593119">+34 664 593 119</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Closing -->
+            <div class="closing-section">
+                <p class="closing-text">Esperamos contar contigo para compartir la alegría y amor en nuestro día especial.</p>
+                <p class="closing-signature">Con cariño,<br><strong>Dahiana & Manuel</strong></p>
+            </div>
         </div>
+    </section>
 
-        <hr class="section-divider">
+    <!-- Falling Petals Container -->
+    <div class="petals-container" id="petalsContainer"></div>
 
-        <div class="rsvp-section fade-in">
-            <h3>¿Nos acompañas?</h3>
-            <p class="rsvp-text">Agradecemos que nos confirmes tu asistencia antes del 1 de Septiembre.</p>
-            <a href="https://wa.me/34600000000?text=¡Hola!+Confirmo+mi+asistencia+a+la+boda+de+Dahiana+y+Manuel." target="_blank" class="btn btn-whatsapp">Confirmar por WhatsApp</a>
-        </div>
-
-        <div class="footer">
-            D&M • 2026
-        </div>
-
-    </div>
-
-    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="wedding-script.js"></script>
 </body>
 </html>
