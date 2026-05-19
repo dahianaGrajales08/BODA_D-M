@@ -1001,3 +1001,16 @@ html, body {
     .wax-seal { width: 76px; height: 76px; }
     .seal-initials { font-size: 1rem; }
 }
+
+/* Forzar que las imágenes de las esencias se vean */
+.esencia-img {
+    background: none !important; /* Quitamos cualquier color de fondo */
+    overflow: hidden !important;
+}
+
+.esencia-img img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
