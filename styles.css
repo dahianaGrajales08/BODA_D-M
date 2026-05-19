@@ -1002,15 +1002,11 @@ html, body {
     .seal-initials { font-size: 1rem; }
 }
 
-/* Forzar que las imágenes de las esencias se vean */
-.esencia-img {
-    background: none !important; /* Quitamos cualquier color de fondo */
-    overflow: hidden !important;
-}
-
+/* ── Imágenes reales en Esencias ── */
 .esencia-img img {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
 }
