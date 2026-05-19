@@ -259,8 +259,11 @@ html, body {
    ============================================= */
 .section-pad { padding: 70px 24px; }
 
-.section-header { max-width: 840px; margin: 0 auto 48px; }
-
+.section-header {
+    max-width: 840px;
+    margin: 0 auto 48px;
+    text-align: center; /* ← añade esto */
+}
 .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.6rem, 4vw, 2.2rem);
@@ -273,7 +276,7 @@ html, body {
     height: 1px;
     background: linear-gradient(to right, transparent, var(--dorado), transparent);
     max-width: 500px;
-    margin: 0;
+    margin: 0 auto; /* ← cambia el margin */
 }
 
 .thin-line {
