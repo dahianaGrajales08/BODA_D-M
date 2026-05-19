@@ -1015,6 +1015,9 @@ html, body {
 .olivos-img-placeholder {
     padding: 0;
     overflow: hidden;
+    width: 100%;
+    max-width: 300px;
+    height: 220px;
 }
 .olivos-img-placeholder img {
     width: 100%;
