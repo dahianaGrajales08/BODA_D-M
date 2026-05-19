@@ -101,27 +101,7 @@ html, body {
    #envelope-wrapper.open .env-flap--top {
        transform: rotateX(185deg);
    }
-/* Carta que sube desde el sobre */
-.env-letter {
-    position: absolute;
-    left: 50%;
-    bottom: 30%;
-    transform: translateX(-50%) translateY(30px);
-    width: min(280px, 60vw);
-    background: var(--marfil);
-    border-radius: 4px;
-    padding: 28px 24px;
-    text-align: center;
-    box-shadow: 0 -8px 40px rgba(0,0,0,0.25);
-    z-index: 2;
-    opacity: 0;
-    transition: transform 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s,
-                opacity 0.7s ease 0.5s;
-}
-#envelope-wrapper.open .env-letter {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-80px);
-}
+
 .letter-leaf {
     font-size: 1.6rem;
     margin-bottom: 8px;
