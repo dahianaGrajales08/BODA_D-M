@@ -35,7 +35,7 @@ wrapper.addEventListener("click", function () {
         setInterval(updateCountdown, 1000);
         // Actualizar icono del player
         document.getElementById("musicIcon").innerText = "⏸";
-    }, 600);
+    }, 800);
 });
 
 // ===================== BOTÓN VOLVER =====================
