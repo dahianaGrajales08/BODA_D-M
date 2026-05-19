@@ -69,7 +69,7 @@ html, body {
     width: 50%;
     height: 100vh;
     background: var(--sobre-verde);
-    z-index: 5;
+    z-index: 4;
     transform-origin: center center;
     transition: transform 0.8s cubic-bezier(0.22,1,0.36,1);
 }
