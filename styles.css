@@ -987,30 +987,15 @@ html, body {
     display: block;
 }
 
-/* Imagen real en sección Olivos */
-.olivos-img-placeholder {
-    padding: 0;
-    overflow: hidden;
-    width: 100%;
-    max-width: 300px;
-    height: 220px;
-}
-.olivos-img-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 10px;
-}
-
 /* Imagen real en sección Cortijo */
 .venue-img-placeholder {
     padding: 0;
     overflow: hidden;
     width: 100%;
-    max-width: 280px;
-    height: 200px;
+    max-width: 500px;
+    height: 350px;
     border-radius: 10px;
+    margin: 0 auto;
 }
 .venue-img-placeholder img {
     width: 100%;
@@ -1024,8 +1009,8 @@ html, body {
     padding: 0;
     overflow: hidden;
     width: 100%;
-    max-width: 300px;
-    height: 220px;
+    max-width: 520px;
+    height: 370px;
     border-radius: 10px;
     margin: 0 auto;
 }
