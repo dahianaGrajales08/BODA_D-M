@@ -1042,3 +1042,7 @@ mark {
     padding: 1px 4px;
     border-radius: 3px;
 }
+
+p {
+    text-align: justify;
+}
