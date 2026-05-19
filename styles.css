@@ -62,40 +62,44 @@ html, body {
         var(--sobre-verde);
 }
 
-/* ---- Flaps laterales bilaterales ---- */
+/* ---- Flaps triangulares ---- */
 .env-flap {
     position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100vh;
-    background: var(--sobre-verde);
-    z-index: 4;
-    transform-origin: center center;
+    width: 0; height: 0;
+}
+.env-flap--left {
+    top: 0; left: 0;
+    border-top:    50vh solid transparent;
+    border-bottom: 50vh solid transparent;
+    border-left:   42vw solid var(--sobre-sombra);
+    z-index: 3;
+}
+.env-flap--right {
+    top: 0; right: 0;
+    border-top:    50vh solid transparent;
+    border-bottom: 50vh solid transparent;
+    border-right:  42vw solid var(--sobre-sombra);
+    z-index: 3;
+}
+.env-flap--bottom {
+    bottom: 0; left: 0;
+    border-left:   50vw solid transparent;
+    border-right:  50vw solid transparent;
+    border-bottom: 44vh solid rgba(0,0,0,0.28);
+    z-index: 3;
+}
+/* Flap superior — el que se abre */
+.env-flap--top {
+    top: 0; left: 0;
+    border-left:   50vw solid transparent;
+    border-right:  50vw solid transparent;
+    border-top:    50vh solid var(--sobre-flap);
+    transform-origin: top center;
     transition: transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    z-index: 5;
 }
-
-.env-flap--left-door {
-    left: 0;
-    transform: rotateY(0deg);
-    background: linear-gradient(to right, 
-        var(--sobre-sombra) 0%, 
-        var(--sobre-verde) 100%);
-}
-
-#envelope-wrapper.open .env-flap--left-door {
-    transform: rotateY(-100deg);
-}
-
-.env-flap--right-door {
-    right: 0;
-    transform: rotateY(0deg);
-    background: linear-gradient(to left, 
-        var(--sobre-sombra) 0%, 
-        var(--sobre-verde) 100%);
-}
-
-#envelope-wrapper.open .env-flap--right-door {
-    transform: rotateY(100deg);
+#envelope-wrapper.open .env-flap--top {
+    transform: rotateX(185deg);
 }
 
 .letter-leaf {
