@@ -339,7 +339,7 @@ html, body {
     font-style: italic;
     font-size: clamp(3.5rem, 14vw, 7rem);
     font-weight: 400;
-    line-height: 1;
+    line-height: 0.85;  /* ← antes ponía 1 */
     color: var(--texto);
     margin-bottom: 24px;
 }
