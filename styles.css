@@ -1010,3 +1010,16 @@ html, body {
     border-radius: 10px;
     display: block;
 }
+
+/* Imagen real en sección Olivos */
+.olivos-img-placeholder {
+    padding: 0;
+    overflow: hidden;
+}
+.olivos-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+}
