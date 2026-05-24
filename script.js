@@ -142,3 +142,33 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.overflow    = "hidden";
     document.documentElement.style.overflow = "hidden";
 });
+
+// ===================== ICS CALENDAR =====================
+function descargarICS() {
+    const ics = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Boda Dahiana & Manuel//ES",
+        "BEGIN:VEVENT",
+        "DTSTART:20261003T110000Z",
+        "DTEND:20261003T220000Z",
+        "SUMMARY:Boda de Dahiana & Manuel 💍",
+        "DESCRIPTION:¡Nos casamos! Os esperamos con mucha ilusión.",
+        "LOCATION:Carretera de Arjona Km 1\\, Andújar (Cortijo de Triana)",
+        "BEGIN:VALARM",
+        "TRIGGER:-P7D",
+        "ACTION:DISPLAY",
+        "DESCRIPTION:Recuerda: Boda de Dahiana & Manuel en 7 días 💍",
+        "END:VALARM",
+        "END:VEVENT",
+        "END:VCALENDAR"
+    ].join("\r\n");
+
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement("a");
+    a.href     = url;
+    a.download = "boda-dahiana-manuel.ics";
+    a.click();
+    URL.revokeObjectURL(url);
+}
