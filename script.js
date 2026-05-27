@@ -130,7 +130,8 @@ function iniciarLluviaFlores() {
 }
 
 // ===================== WHATSAPP =====================
-function abrirWhatsApp(telefono, mensaje) {
+function abrirWhatsApp(telefono) {
+    var mensaje = "Confirmo mi asistencia a la boda de Dahiana & Manuel el 03 de octubre de 2026. \u00a1Qu\u00e9 emoci\u00f3n! \uD83C\uDF3F\uD83D\uDC8D";
     window.open(
         "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje),
         "_blank"
